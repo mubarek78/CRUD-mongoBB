@@ -1,0 +1,35 @@
+<%- include('header') -%>
+
+<h2>User Manegment System</h2>
+<a class="home"  href="/newuser">New User<i class="fas fa-user"></i></a>
+
+<table class="center">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>eEmail</th>
+		<th>Gender</th>
+		<th>Status</th>
+		<th>Action</th>
+	</tr>
+	<% for (var i = 0; i < newuser.length; i++) { %>
+    <tr>
+	  <td><%= i+1 %></td>
+	  <td><%= newuser[i].Name %></td>
+	  <td><%= newuser[i].Email %></td>
+	  <td><%= newuser[i].Gender %></td>
+	  <td><%= newuser[i].Status %></td>
+	  <td>
+	  	<a href="/edituser/<%= newuser[i].Name %>" ><i class="fas fa-pencil-alt"></i></a>
+
+			<form action="/delete" method="post">
+				<button class = 'btn btn-primary btn-md'  type="submit" name="list" value=<%= newuser[i]._id %>><i class="fas fa-times"></i></button>
+			</form>
+
+
+	  </td>
+    </tr>
+	<% } %>
+</table>
+
+<%- include('footer') -%>
